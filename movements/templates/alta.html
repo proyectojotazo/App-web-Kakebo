@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %} Nueva Alta {% endblock %}
+
+{% block mi_precioso_bloque_de_formato %}
+    <h2 class="mid-title">Nueva Alta</h2>
+    <div class="div-form">
+    <form action="creaalta" method="POST" novalidate>
+        
+            {{ form.csrf_token }}
+            
+            {{ form.fecha.label(class="form-label")}}
+            {{ form.fecha(class="form-input")}}
+            {% for error in form.fecha.errors %}
+                <p class="p-error">{{ error }}</p>
+            {% endfor %}
+            
+            
+            {{ form.concepto.label(class="form-label")}}
+            {{ form.concepto(class="form-input") }}
+            {% for error in form.concepto.errors %}
+                <p class="p-error">{{ error }}</p>
+            {% endfor %}
+            
+            
+                {{ form.cantidad.label(class="form-label") }}
+                {{ form.cantidad(class="form-input") }}
+                {% for error in form.cantidad.errors %}
+                    <p class="p-error">{{ error }}</p>
+                {% endfor %}
+            
+            {{ form.submit(class="btn btn-primary") }}
+            <a href="{{ url_for('listaIngresos') }}" role="button">Volver</a>
+            
+    </form>
+    </div>
+    
+{%  endblock %}
